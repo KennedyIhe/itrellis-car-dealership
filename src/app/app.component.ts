@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
 
   filterTable() {
     const arr: Car[] = [];
-    // For a production environment, I will have cars cached
+    // For a production development, I will have cars cached
     // to avoid multiple hit to the database
     this.carService.getAll()
     .subscribe(cars => {
