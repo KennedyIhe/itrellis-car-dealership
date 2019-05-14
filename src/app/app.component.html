@@ -1,0 +1,74 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <div class="card">
+    <div class="card-header">
+      Cars
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <input [(ngModel)]="searchText" type="text" class="form-control" 
+        placeholder="Filter by Make, Year, Color or Price">
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox" 
+              class="custom-control-input" 
+              [ngModel]="hasSunRoof" (ngModelChange)="onSunRoofChange($event)"
+              id="sunroof">
+            <label class="custom-control-label" for="sunroof">Has Sun Roof</label>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox" class="custom-control-input" id="fourWheel"
+            [ngModel]="hasFourWheel" (ngModelChange)="onFourWheelChange($event)">
+            <label class="custom-control-label" for="fourWheel">Has 4 Wheel Drive</label>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox" class="custom-control-input" id="powerWindows"
+            [ngModel]="hasPowerWindow" (ngModelChange)="onPowerWindowsChange($event)">
+            <label class="custom-control-label" for="powerWindows">Has Power Windows</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Make</th>
+          <th scope="col">Year</th>
+          <th scope="col">Color</th>
+          <th scope="col">Price</th>
+          <th scope="col">Sun Roof</th>
+          <th scope="col">Four Wheel Drive</th>
+          <th scope="col">Low Miles</th>
+          <th scope="col">Power Windows</th>
+          <th scope="col">Navigation</th>
+          <th scope="col">Heated Seats</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars | carsFilter: {make: searchText, year:searchText,  color: searchText,  price: searchText}; let i=index;">
+          <td>{{i +1}}</td>
+          <td>{{car.make}}</td>
+          <td>{{car.year}}</td>
+          <td>{{car.color}}</td>
+          <td>{{car.price}}</td>
+          <td>{{car.hasSunroof}}</td>
+          <td>{{car.isFourWheelDrive}}</td>
+          <td>{{car.hasLowMiles}}</td>
+          <td>{{car.hasPowerWindows}}</td>
+          <td>{{car.hasNavigation}}</td>
+          <td>{{car.hasHeatedSeats}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
