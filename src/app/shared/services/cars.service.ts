@@ -13,6 +13,8 @@ export class CarsService {
 
   // TODO: methods to return data from json file or create an in memory web api
   getAll(): Observable<Car[]> {
+    // I couldn't mock a web api because mock data is not a json file but javascript object
+    // I decided to wrap it with an observable
     return of(cars || []);
   }
 }
